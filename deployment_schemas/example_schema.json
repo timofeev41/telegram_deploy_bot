@@ -1,0 +1,5 @@
+{
+  "name": "example deployment schema",
+  "target": "on 127.0.0.1",
+  "chain": ["cd /src", "docker-compose up --build -d"]
+}

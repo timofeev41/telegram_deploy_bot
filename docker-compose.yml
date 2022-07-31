@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  feecc-ipfs-gateway:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+      - "~/.cache/pip/:/root/.cache/pip"
+    environment:
+      TOKEN: "TOKEN"
