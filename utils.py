@@ -1,6 +1,6 @@
 import json
 import os
-from models import Schema
+from models import Schema, SchemaTarget
 from pydantic import parse_obj_as
 from aiogram import types
 
@@ -19,3 +19,8 @@ async def build_actions_keyboard(schema_file: str) -> types.InlineKeyboardMarkup
     keyboard.add(types.InlineKeyboardButton(text="Деплой", callback_data=f"deploy_start_{schema_file}"))
     keyboard.add(types.InlineKeyboardButton(text="Отменить", callback_data=f"deploy_cancel_{schema_file}"))
     return keyboard
+
+
+async def run_schema(schema_targets: list[SchemaTarget]) -> None:
+    for action in schema_targets:
+        await action.execute()
